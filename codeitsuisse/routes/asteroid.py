@@ -15,10 +15,10 @@ def evaluateAsteroid():
 
     result = [] 
 
-    for test_case in data: 
+    for test_case in data['test_cases']: 
         result.append(asteroid(test_case))
     logging.info(result)
-    return flask.jsonify(result)
+    return jsonify(result)
 
 
 # "AAABBCC" -> ['AAA','BB','CC']
