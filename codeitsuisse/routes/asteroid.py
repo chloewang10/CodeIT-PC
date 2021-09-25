@@ -11,14 +11,12 @@ logger = logging.getLogger(__name__)
 def evaluateAsteroid():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
-    # inputValue = data.get("input")
 
-    result = [] 
-
-    for test_case in data: 
+    result=[]
+    for test_case in data['test_cases']:
         result.append(asteroid(test_case))
-    logging.info(result)
-    return flask.jsonify(result)
+    logging.info("My result :{}".format(result))
+    return jsonify(result)
 
 
 # "AAABBCC" -> ['AAA','BB','CC']
@@ -59,7 +57,9 @@ def countScore(our_dict):
         if value >= 10:
             count += (value * 2)
 
+
         elif value >= 7 and value < 10:
+
             count += (value * 1.5)
 
         elif value <= 6:
@@ -87,3 +87,4 @@ def asteroid(inputValue):
     output["score"] = score
     output["origin"] = origin
     return output
+
